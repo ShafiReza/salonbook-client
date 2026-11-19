@@ -1,0 +1,71 @@
+@import "tailwindcss";
+
+@theme {
+  --color-blush-50: #fff6f7;
+  --color-blush-100: #ffe9ec;
+  --color-blush-200: #fdd3da;
+  --color-blush-300: #f8adb9;
+  --color-blush-400: #ef7f94;
+  --color-blush-500: #dc5576;
+  --color-blush-600: #c23a5f;
+  --color-blush-700: #a02c4d;
+  --color-charcoal-950: #161314;
+  --color-charcoal-900: #211d1e;
+  --color-charcoal-800: #2f2a2b;
+  --color-charcoal-700: #453f40;
+  --color-charcoal-600: #5f5859;
+  --color-charcoal-500: #7d7576;
+  --color-charcoal-400: #a39b9c;
+  --color-sand-50: #fcf9f6;
+  --color-sand-100: #f6f0ea;
+  --color-sand-200: #ece2d8;
+  --color-sand-300: #dccdbd;
+}
+
+@theme inline {
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-playfair), Georgia, "Times New Roman", serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-sand-50);
+  color: var(--color-charcoal-800);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-display);
+  color: var(--color-charcoal-900);
+  letter-spacing: -0.01em;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-blush-500);
+  outline-offset: 2px;
+}
+
+@keyframes hero-rise {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: none; }
+}
+.hero-rise { animation: hero-rise 0.8s ease both; }
+
+@keyframes shimmer {
+  0% { background-position: -400px 0; }
+  100% { background-position: 400px 0; }
+}
+.skeleton {
+  background: linear-gradient(90deg, var(--color-sand-100) 25%, var(--color-sand-200) 50%, var(--color-sand-100) 75%);
+  background-size: 800px 100%;
+  animation: shimmer 1.4s infinite linear;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .hero-rise, .skeleton { animation: none; }
+}
